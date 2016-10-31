@@ -19,9 +19,9 @@ namespace Partie3
             Coureur coureur7 = new Coureur(1, "Abraham");
             Coureur coureur8 = new Coureur(42, "Jesus");
             Coureur coureur9 = new Coureur(24, "Daryl");
-            //test
+            
             Console.WriteLine("\n Que voulez-vous faire ?\n\n");
-
+            //test
             Console.WriteLine("\n 1 : Travailler sur une collection générique ? \n");
             Console.WriteLine("\n 2 : Travailler sur une collection non générique ? \n");
             int nombre = 0;
