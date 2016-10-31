@@ -41,6 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coureur.cs" />
+    <Compile Include="Generique_Dictionnaire.cs" />
+    <Compile Include="Generique_Queue.cs" />
+    <Compile Include="Generique_Stack.cs" />
+    <Compile Include="NonGenerique_BitArray.cs" />
+    <Compile Include="NonGenerique_Hashtable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
