@@ -10,6 +10,7 @@ namespace Partie3
     {
         static void Main(string[] args)
         {
+            // je veux mettre mon code ici
         }
     }
 }
