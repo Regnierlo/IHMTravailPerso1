@@ -21,7 +21,7 @@ namespace Partie3
             Coureur coureur9 = new Coureur(24, "Daryl");
 
             Console.WriteLine("\n Que voulez-vous faire ?\n\n");
-
+            /// Plaît il ?
             Console.WriteLine("\n 1 : Travailler sur une collection générique ? \n");
             Console.WriteLine("\n 2 : Travailler sur une collection non générique ? \n");
             int nombre = 0;
