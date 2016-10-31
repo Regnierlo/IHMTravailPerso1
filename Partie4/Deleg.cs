@@ -6,25 +6,37 @@ using System.Threading.Tasks;
 
 namespace Partie4
 {
+    //delegate double CalculatriceV2(double nb1, double nb2);
+
     class Deleg
     {
-        delegate double Calculatrice(double nb1, double nb2);
+        //Declaration de l'affichage V2 mais cette fois ci en dehors du main().
+        //Comme pour une déclaration de variable
+        Action<double> AfficheV2 = s => Console.WriteLine("Resultat : {0}", s);
+
         public Deleg()
         {
-            Calculatrice addition = delegate(double input1, double input2)
-            {
-                return input1 + input2;
-            };
+            start(); //Suite du test
+        }
 
-            Calculatrice soustraction = delegate(double input1, double input2)
-            {
-                return input1 - input2;
-            };
+        private void start()
+        {
+            //Utilisation de AfficheV2 déclaré en haut
+            AfficheV2(AdditionV2(1,1));
+            //Utilisation de l'addition V1 dans la classe Program
+            CalculatriceV1 addv1 = Program.AdditionV1;
+            //Idem mais cette fois ci on utilise la version 2 - Méthode Basique -> appel de fonction
+            AfficheV2(AdditionV2(1, 2));
+            //Idem mais cette fois ci en utilisant le délégué
+            CalculatriceV2 addv2 = AdditionV2;
+            //Utilisation du délégué déclaré au dessus
+            AfficheV2(addv2(1, 3));
+        }
 
-            Console.WriteLine("Resultat de 4+5 : {0}", addition(4, 5));
-
-            Action<double> Affiche = (s) => Console.WriteLine("Résultat : {0}", s);
-            Affiche(soustraction(7, 3));
+        //Utilisation du mot clé static obligatoire pour utilisé les délégué
+        public static double AdditionV2(double nb1, double nb2)
+        {
+            return nb1 + nb2;
         }
     }
 }
