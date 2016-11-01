@@ -13,6 +13,9 @@ namespace Partie3
         // Représente une collection de paires clé/valeur 
         // triées par les clés et accessible par clé et par index.
 
+        /// <summary>
+        /// Constructeur par défaut
+        /// </summary>
         public NonGenerique_SortedList()
         {
             _sortedList = new SortedList();
@@ -20,6 +23,14 @@ namespace Partie3
             // Triée suivant le IComparable
         }
 
+        /// <summary>
+        /// Constructeur par copie
+        /// </summary>
+        /// <param name="res">La collection qu'on copiera pour construire notre instance</param>
+        public NonGenerique_SortedList(SortedList res)
+        {
+            this._sortedList = res;
+        }
         
         /// <summary>
         /// Accesseurs
@@ -30,65 +41,79 @@ namespace Partie3
             set { _sortedList = value; }
         }
 
+        // ----------------------------------------------- METHODES
+
         /// <summary>
         /// Affiche la collection entièrement.
         /// </summary>
         public void afficher()
         {
-            if (_sortedList.Count != 0)
-            {
-                Console.WriteLine("\n      ---- Valeur / Clé ---- \n");
-
-                for (int i = 0; i < _sortedList.Count; i++)
-                    Console.WriteLine("n° " + (i + 1) + " : " + _sortedList.GetByIndex(i).ToString() + " / " + _sortedList.GetKey(i).ToString() + "\n");
-            }
+            Console.WriteLine("\n----- Affichage de la collection -----\n");
+            if (_sortedList.Count > 0)
+                foreach(DictionaryEntry entry in _sortedList)
+                    Console.WriteLine("    clé : {0} / valeur : {1}\n", entry.Key, entry.Value);
             else
-                Console.WriteLine("La collection est vide.\n");
+                Console.WriteLine("x-x La collection est vide.\n");
         }
-
+        
+        /// <summary>
+        /// Ajout d'un objet dans la collection
+        /// </summary>
+        /// <param name="key">La clé du couple clé/valeur que l'on veut ajouter</param>
+        /// <param name="value">La valeur  du couple clé/valeur que l'on veut ajouter</param>
         public void ajouter(Object key, Object value)
         {
-            _sortedList.Add(key, value);
+            Console.WriteLine("\n------ Ajout ------ \n");
+            try
+            {
+                _sortedList.Add(key, value);
+                Console.WriteLine("{0} / {1} a été ajouté.\n", key, value);
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("x-x La clé a déjà été donnée.\n");
+            }
         }
 
+        /// <summary>
+        /// Permet de récupérer l'index d'un objet dont la clé a été mise en paramètre
+        /// </summary>
+        /// <param name="key">La clé de l'objet pour lequel on aimerait connaître l'index</param>
+        /// <returns>L'index de l'objet</returns>
         public int recupererIndexKey(Object key)
         {
             return _sortedList.IndexOfKey(key);
         }
 
-        public int recupererIndexValue(Object value)
-        {
-            return _sortedList.IndexOfValue(value);
-        }
-
         /// <summary>
         /// Suppression de l'objet en fonction de sa clé.
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">La clé du couple clé/valeur qu'on aimerait supprimer</param>
         public void supprimerKey(Object key)
         {
+            Console.WriteLine("\n------ Suppression ------ \n");
             if (_sortedList.Contains(key))
             {
                 _sortedList.Remove(key);
-                Console.WriteLine("Le couple ayant la clé " + key + " a été supprimé.\n");
+                Console.WriteLine("Le couple comprenant la clé {0} a été supprimé.\n",key);
             }
             else
-                Console.WriteLine("La collection ne contient pas cette clé.\n");
+                Console.WriteLine("x-x La collection ne contient pas cette clé.\n");
         }
 
         /// <summary>
         /// Suppression d'une entrée de la collection en fonction de son index
         /// </summary>
-        /// <param name="i"></param>
-        public void supprimerIndex(Int32 i)
+        /// <param name="i">Index de l'objet qu'on aimerait supprimer</param>
+        public void supprimerIndex(int i)
         {
-            if (i > _sortedList.Capacity)
-                Console.WriteLine("Il n'y a rien à cet emplacement de la collection.\n");
+            Console.WriteLine("\n------ Suppression ------ \n");
+            if (i > _sortedList.Count)
+                Console.WriteLine("x-x Il n'y a rien à cet emplacement de la collection.\n");
             else
             {
-                Console.WriteLine("Le couple " + _sortedList.GetByIndex(i) + " (" + _sortedList.GetKey(i) + ") a été enlevé.\n");
+                Console.WriteLine("Le couple {0} / {1} a été supprimé.\n", _sortedList.GetByIndex(i), _sortedList.GetKey(i));
                 _sortedList.RemoveAt(i);
-                
             }
         }
 
@@ -97,58 +122,73 @@ namespace Partie3
         /// </summary>
         public void supprimerCollection()
         {
+            Console.WriteLine("\n------ Suppression ------ \n");
             _sortedList.Clear();
         }
 
         /// <summary>
         /// Recherche dans la collection en fonction de la clé du couple clé/valeur
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">La clé du couple clé/valeur que l'on aimerait retrouver</param>
         public void rechercherKey(Object key)
         {
+            Console.WriteLine("\n------ Recherche ------ \n"); 
             if (_sortedList.ContainsKey(key))
-                Console.WriteLine("La collection contient la clé : " + key.ToString() + "\n");
+                Console.WriteLine("La collection contient la clé {0}.\n", key);
             else
-                Console.WriteLine("La collection ne contient pas la clé demandée.\n");
+                Console.WriteLine("x-x La collection ne contient pas la clé {0}.\n", key);
         }
+
         /// <summary>
         /// Recherche dans la collection en fonction de l'objet en lui-même
         /// </summary>
-        /// <param name="couple"></param>
+        /// <param name="couple">Le couple clé/valeur que l'on aimerait retrouver</param>
         public void rechercher(Object objet)
         {
+            Console.WriteLine("\n------ Recherche ------ \n"); 
             if (_sortedList.Contains(objet))
             {
-                for(int i=0 ; i < _sortedList.Count ; i++)
-                    if(_sortedList.GetByIndex(i).Equals(objet))
-                        Console.WriteLine("n°" + (i+1) + " : " +objet.ToString()+" est une valeur.\n");
+                int i = 1;
+                foreach (DictionaryEntry entry in _sortedList)
+                {
+                    if (objet != null && entry.Value != null && (entry.Value.Equals(objet) || entry.Key.Equals(objet)))
+                        Console.WriteLine("n° {0} = clé : {1} / valeur : {2}.\n", i, entry.Key, entry.Value);
                     else
-                        if(_sortedList.GetKey(i).Equals(objet))
-                            Console.WriteLine("n°" + (i+1) + " : " +objet.ToString()+" est une clé.\n");
+                        if (objet == null && entry.Value == null)
+                            Console.WriteLine("n° {0} : contient la valeur null, ayant comme clé {1}.\n", i, entry.Key);
+                    i++;
+                }    
             }
             else
                 Console.WriteLine("La collection ne contient pas l'objet demandé.\n");
         }
 
         /// <summary>
-        /// Recherche dans la collection en fonction de la valeur du couple.
+        /// Recherche dans la collection en fonction de la valeur du couple clé/valeur
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">La valeur du couple clé/valeur que l'ont aimerait retrouver</param>
         public void rechercherValue(Object value)
         {
+            Console.WriteLine("\n------ Recherche ------ \n"); 
             if (!_sortedList.ContainsValue(value))
-                Console.WriteLine("La collection ne contient pas la valeur " + value + ".\n");
+                Console.WriteLine("La collection ne contient pas la valeur {0}.\n", value);
             else
             {
-                Console.WriteLine("La collection contient la valeur "+value+".\n");
-                for (int i = 0; i < _sortedList.Count; i++)
-                    if (_sortedList.GetByIndex(i).Equals(value))
-                        Console.WriteLine(i + " : " + value + " / "+_sortedList.GetKey(i)+"\n");
+                int i = 1 ;
+                foreach (DictionaryEntry entry in _sortedList)
+                {
+                    if (entry.Value != null)
+                    {
+                        if(entry.Value.Equals(value))
+                            Console.WriteLine("n° {0} : contient la valeur {1}, ayant comme clé {2}.\n", i, entry.Value, entry.Key);
+                    }
+                    else
+                        if(value == null)
+                            Console.WriteLine("n° {0} : contient la valeur null, ayant comme clé {1}.\n", i, entry.Key);
+                    i++;
+                }
             }
 
-
         }
-
-
     }
 }

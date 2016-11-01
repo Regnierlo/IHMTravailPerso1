@@ -176,9 +176,9 @@ namespace Partie3
             }
             else if (nombre == 2)
             {
-                Console.WriteLine("--- 1 = Utilisation de Hashtable\n");
-                Console.WriteLine("--- 2 = x\n");
-                Console.WriteLine("--- 3 = x\n");
+                Console.WriteLine("\n    1 = Utilisation de Hashtable\n");
+                Console.WriteLine("    2 = Utilisation de SortedList\n");
+                Console.WriteLine("    3 = Utilisation de Queue\n");
                 try
                 {
                     nombre = int.Parse(Console.In.ReadLine());
@@ -192,17 +192,21 @@ namespace Partie3
                 {
                     case 1:
                         NonGenerique_Hashtable hashtable = new NonGenerique_Hashtable();
-                        hashtable.ajouter(coureur1.Maillot, coureur1.Nom);
-                        hashtable.ajouter(coureur2.Maillot, coureur2.Nom);
-                        hashtable.ajouter(coureur3.Maillot, coureur3.Nom);
-                        hashtable.ajouter(coureur4.Maillot, coureur4.Nom);
-                        hashtable.ajouter(coureur5.Maillot, coureur5.Nom);
-                        hashtable.ajouter(coureur6.Maillot, coureur6.Nom);
-                        hashtable.ajouter(coureur7.Maillot, coureur7.Nom);
-                        hashtable.ajouter(coureur8.Maillot, coureur8.Nom);
-                        hashtable.ajouter(coureur9.Maillot, coureur9.Nom);
+                        hashtable.ajouter(coureur1, "Rhee");
+                        hashtable.ajouter(coureur1.Nom, true);
+                        hashtable.ajouter(coureur1.Nom, 15);
+                        hashtable.ajouter(coureur9, null);
+                        hashtable.ajouter(coureur8.Maillot, false);
+                        hashtable.ajouter(coureur8, "Paul Rovia");
+                        hashtable.ajouter(coureur5, "Rhee");
                         hashtable.afficher();
-                        hashtable.rechercher();
+                        hashtable.rechercherValue("Rhee");
+                        hashtable.rechercherValue(null);
+                        hashtable.rechercherKey(coureur7);
+                        hashtable.rechercherKey(coureur9);
+                        hashtable.supprimerKey(coureur5);
+                        hashtable.afficher();
+                        hashtable.supprimerHashtable();
                         hashtable.afficher();
                         break;
 
@@ -212,20 +216,41 @@ namespace Partie3
                         sortedList.ajouter(coureur3, coureur4);
                         sortedList.ajouter(coureur9, coureur8.Maillot);
                         sortedList.ajouter(coureur8, coureur7.Nom);
+                        sortedList.ajouter(coureur1, null);
                         sortedList.afficher();
                         sortedList.supprimerIndex(sortedList.recupererIndexKey(coureur9));
                         sortedList.afficher();
                         sortedList.supprimerKey(coureur8);
                         sortedList.afficher();
-
                         sortedList.ajouter(coureur1, coureur8);
                         sortedList.ajouter(coureur7, coureur4);
                         sortedList.rechercherKey(coureur8);
                         sortedList.rechercherValue(coureur4);
+                        sortedList.ajouter(coureur4, null);
+                        sortedList.rechercherValue(null);
                         sortedList.rechercher(coureur1);
-
+                        sortedList.supprimerCollection();
+                        sortedList.afficher();
                         break;
+
                     case 3:
+                        NonGenerique_Queue queue = new NonGenerique_Queue();
+                        queue.ajouter(coureur1);
+                        queue.ajouter(true);
+                        queue.ajouter(coureur7.Nom);
+                        queue.ajouter(coureur4.Nom + " a comme numéro de maillot le n°  " + coureur4.Maillot);
+                        queue.afficher();
+                        queue.inserer("Negan", 2);
+                        queue.afficher();
+                        queue.rechercher("Negan");
+                        queue.inserer(true, 2);
+                        queue.afficher();
+                        queue.rechercher(true);
+                        queue.supprimer(true);
+                        queue.rechercher(true);
+                        queue.afficher();
+                        queue.supprimerQueue();
+                        queue.afficher();
                         break;
 
                     default: Console.WriteLine("Le numéro tapé ne correspond à rien.");

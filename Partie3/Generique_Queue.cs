@@ -174,13 +174,10 @@ namespace Partie3
             {   
                 Queue<Coureur> res = new Queue<Coureur>();
                 foreach (Coureur entry in _queue)
-                {
                     if (!entry.Equals(objet))
                         res.Enqueue(entry);
-                }
                 _queue = res;
             }
-            
         }
 
         /// <summary>
@@ -214,10 +211,14 @@ namespace Partie3
         /// <param name="objet">L'objet que l'on aimerait retrouver</param>
         public void rechercher(Coureur objet)
         {
-            if(_queue.Contains(objet))
-                Console.WriteLine(objet + " est bien dans la queue.\n");
+            if (_queue.Contains(objet))
+            {
+                for (int i = 0; i < _queue.Count; i++)
+                    if (_queue.ElementAt(i).Equals(objet))
+                        Console.WriteLine("n°" + i + " : " + objet.ToString() + "\n");
+            }
             else
-                Console.WriteLine(objet + " n'est pas dans la queue.\n");
+                Console.WriteLine("\n" + objet + " n'est pas dans la queue.\n");
         }
 
     }

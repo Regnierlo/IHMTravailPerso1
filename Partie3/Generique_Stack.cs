@@ -171,10 +171,12 @@ namespace Partie3
         {
             if (_stack.Contains(objet))
             {
-                Console.WriteLine("\n"+objet + " est bien dans le stack.\n");
+                for (int i = 0; i < _stack.Count; i++)
+                    if (_stack.ElementAt(i).Equals(objet))
+                        Console.WriteLine("n°" + i + " : " + objet.ToString() + "\n");
             }
             else
-                Console.WriteLine("\n"+objet + " n'est pas dans le stack.\n");
+                Console.WriteLine("\n" + objet + " n'est pas dans le stack.\n");
         }
     }
 }

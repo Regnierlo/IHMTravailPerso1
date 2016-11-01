@@ -46,6 +46,7 @@
     <Compile Include="Generique_Queue.cs" />
     <Compile Include="Generique_Stack.cs" />
     <Compile Include="NonGenerique_Hashtable.cs" />
+    <Compile Include="NonGenerique_Queue.cs" />
     <Compile Include="NonGenerique_SortedList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
