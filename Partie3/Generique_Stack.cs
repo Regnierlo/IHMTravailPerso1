@@ -9,7 +9,6 @@ namespace Partie3
     class Generique_Stack
     {
         private Stack<Coureur> _stack;
-        // LIFO : dernier entré premier sorti -> pile d'assiette
 
         /// <summary>
         /// Constructeur par défaut
@@ -22,7 +21,7 @@ namespace Partie3
         /// <summary>
         /// Constructeur par copie
         /// </summary>
-        /// <param name="res"></param>
+        /// <param name="res">La collection qu'on copiera pour construire notre instance</param>
         public Generique_Stack(Stack<Coureur> res)
         {
             _stack = res;
@@ -38,31 +37,31 @@ namespace Partie3
         }
 
         /// <summary>
-        /// Permet d'afficher le stack entier
+        /// Permet d'Afficher le stack entier
         /// </summary>
-       public void afficherStack()
+       public void Afficher()
         {
-            int res = 1;
-            if (_stack.Count != 0)
-            {
+            Console.WriteLine("\n----- Affichage de la collection -----\n");
+            int i = 1;
+            if (_stack.Count > 0)
                 foreach (Coureur entry in _stack)
                 {
-                    Console.WriteLine("---- " + res + " : " + entry.ToString() + "\n");
-                    res++;
+                    Console.WriteLine("     {0} : {1}\n", i, entry.ToString());
+                    i++;
                 }
-            }
             else
-                Console.WriteLine("---- Le stack est vide.\n");
+                Console.WriteLine("x-x Le stack est vide.\n");
         }
 
         /// <summary>
-        /// Permet d'ajouter un objet au stack
+        /// Permet d'Ajouter un objet au stack
         /// </summary>
-        /// <param name="objet">L'objet qu'on veut ajouter</param>
-        public void ajouter(Coureur objet)
+        /// <param name="objet">L'objet qu'on veut Ajouter</param>
+        public void Ajouter(Coureur objet)
         {
+            Console.WriteLine("\n------ Ajout ------ \n");
             _stack.Push(objet);
-            Console.WriteLine(objet.ToString() + " a été ajouté.\n");
+            Console.WriteLine("{0} a été ajouté.\n", objet.ToString());
         }
 
         /// <summary>
@@ -70,23 +69,30 @@ namespace Partie3
         /// </summary>
         /// <param name="objet">L'objet à insérer</param>
         /// <param name="numero">L'emplacementoù on veut insérer l'objet</param>
-        public void inserer(Coureur objet, int numero)
+        public void Inserer(Coureur objet, int index)
         {
+            Console.WriteLine("\n------ Insertion ------ \n");
             Stack<Coureur> res = new Stack<Coureur>();
-            int i = 1;
-            foreach (Coureur entry in _stack)
+            if (index > _stack.Count)
             {
-                if (i == numero)
+                res = _stack;
+                res.Push(objet);
+                Console.WriteLine("{0} a été ajouté à la fin de la collection.\n", objet.ToString());
+            }
+            else
+            {
+                int i = 1;
+                foreach (Coureur entry in _stack)
                 {
-                    res.Push(objet);
+                    if (i == index)
+                    {
+                        Console.WriteLine("{0} a été ajouté à l'index {1}.\n", objet.ToString(), i);
+                        res.Push(objet);
+                        i++;
+                    }
+                    res.Push(entry);
                     i++;
                 }
-                res.Push(entry);
-                i++;
-            }
-            if(numero > _stack.Count)
-            {
-                res.Push(objet);
             }
             _stack = res;
         }
@@ -94,10 +100,11 @@ namespace Partie3
         /// <summary>
         /// Permet d'appeler la fonction récursive qui va elle, trier le stack
         /// </summary>
-        public void trierStack()
+        public void Tri()
         {
+            Console.WriteLine("\n------ Tri ------ \n");
             Stack<Coureur> res  = new Stack<Coureur>();
-            _stack = trierRecursif(_stack,res,_stack.Count);
+            _stack = TriRecursif(_stack, res, _stack.Count);
         }
  
         /// <summary>
@@ -107,7 +114,7 @@ namespace Partie3
         /// <param name="garde">Le stack déjà trié</param>
         /// <param name="nb">La taille du stack contenant tous les objets</param>
         /// <returns>Le stack trié</returns>
-        public Stack<Coureur> trierRecursif(Stack<Coureur> rejet, Stack<Coureur> garde, int nb){
+        public Stack<Coureur> TriRecursif(Stack<Coureur> rejet, Stack<Coureur> garde, int nb){
             
             Coureur coureurT = rejet.Peek();
             rejet.Pop();
@@ -128,38 +135,39 @@ namespace Partie3
                             rejet.Push(entry);
                         }
                 }
-
                 garde.Push(coureurT);
                 if (rejet.Count>0)
-                    garde = trierRecursif(rejet, garde, nb);
-            
+                    garde = TriRecursif(rejet, garde, nb);
             } while (garde.Count<(nb-1));
-
             return garde;
         }
 
         /// <summary>
         /// Supprime l'objet mis en paramètre
         /// </summary>
-        /// <param name="objet">L'objet que l'on veut supprimer</param>
-        public void supprimerC(Coureur objet){
+        /// <param name="objet">L'objet que l'on veut Supprimer</param>
+        public void Supprimer(Coureur objet)
+        {
+            Console.WriteLine("\n------ Suppression ------ \n");
             if (_stack.Contains(objet))
             {
                 Stack<Coureur> res = new Stack<Coureur>();
                 foreach (Coureur entry in _stack)
-                {
                     if (!entry.Equals(objet))
                         res.Push(entry);
-                }
+                    else
+                        Console.WriteLine("L'objet {0} a été supprimé.\n", entry.ToString()); 
                 _stack = res;
             }
+            Console.WriteLine("x-x La collection ne contient pas cet objet {0}.\n", objet.ToString());
         }
 
         /// <summary>
         /// Supprime entièrement le stack
         /// </summary>
-        public void supprimerStack()
+        public void SupprimerStack()
         {
+            Console.WriteLine("\n------ Suppression ------ \n");
             _stack.Clear();
         }
 
@@ -167,16 +175,17 @@ namespace Partie3
         /// Permet de savoir si l'objet est dans la collection
         /// </summary>
         /// <param name="objet"></param>
-        public void rechercher(Coureur objet)
+        public void Rechercher(Coureur objet)
         {
+            Console.WriteLine("\n------ Recherche ------ \n");
             if (_stack.Contains(objet))
             {
                 for (int i = 0; i < _stack.Count; i++)
                     if (_stack.ElementAt(i).Equals(objet))
-                        Console.WriteLine("n°" + i + " : " + objet.ToString() + "\n");
+                        Console.WriteLine("n°{0} : {1}\n", i, _stack.ElementAt(i));
             }
             else
-                Console.WriteLine("\n" + objet + " n'est pas dans le stack.\n");
+                Console.WriteLine("\n {0} n'est pas dans la queue.\n", objet.ToString());
         }
     }
 }

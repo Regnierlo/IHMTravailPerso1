@@ -53,118 +53,87 @@ namespace Partie3
                     case 1:
                         Generique_Dictionnaire dictionnaire = new Generique_Dictionnaire();
 
-                        dictionnaire.AjoutDico(coureur1.Nom, coureur1.Maillot);
-                        dictionnaire.AjoutDico(coureur2.Nom, coureur2.Maillot);
-                        dictionnaire.AjoutDico(coureur3.Nom, coureur3.Maillot);
-                        dictionnaire.AjoutDico(coureur4.Nom, coureur4.Maillot);
-                        dictionnaire.AjoutDico(coureur5.Nom, coureur5.Maillot);
-                        dictionnaire.AjoutDico(coureur6.Nom, coureur6.Maillot);
-                        dictionnaire.AjoutDico(coureur7.Nom, coureur7.Maillot);
-                        dictionnaire.AjoutDico(coureur8.Nom, coureur8.Maillot);
-                        dictionnaire.AjoutDico(coureur9.Nom, coureur9.Maillot);
-
-                        Console.WriteLine("-------------------------------------------------\n--On recherche la clé 5 dans la collection.\n");
-                        dictionnaire.RechercheNumero(5);
-
-                        Console.WriteLine("-------------------------------------------------\n--On trie la collection.\n");
-                        dictionnaire.TrierDico();
-                        dictionnaire.affichageDico();
-
-                        Console.WriteLine("-------------------------------------------------\n--On supprime les coureurs ayant les numéros 5 et 1 dans la collection.\n");
-                        dictionnaire.SupprimerDico(5);
-                        dictionnaire.SupprimerDico(1);
-
-                        Console.WriteLine("-------------------------------------------------\n--On recherche le coureur avec le maillot 5 dans la collection.\n");
-                        dictionnaire.RechercheNumero(5);
-
-                        Console.WriteLine("-------------------------------------------------\n--On affiche la collection.");
-                        dictionnaire.affichageDico();
-
-                        Console.WriteLine("-------------------------------------------------\n--On supprime la collection.");
-                        dictionnaire.SupprimerDicoEntier();
-                        dictionnaire.affichageDico();
+                        dictionnaire.Ajouter( 12 , coureur1 );
+                        dictionnaire.Ajouter( 2 , coureur2 );
+                        dictionnaire.Ajouter( 34 , coureur3 );
+                        dictionnaire.Ajouter( 14 , coureur4 );
+                        dictionnaire.Ajouter( 5 , coureur5 );
+                        dictionnaire.Ajouter( 67 , coureur6 );
+                        dictionnaire.Ajouter( 17 , coureur7 );
+                        dictionnaire.Ajouter( 98 , coureur8 );
+                        dictionnaire.Ajouter( 97 , coureur9 );
+                        dictionnaire.RechercherKey(5);
+                        dictionnaire.TriKey();
+                        dictionnaire.Afficher();
+                        dictionnaire.Supprimer(5);
+                        dictionnaire.Supprimer(1);
+                        dictionnaire.RechercherKey(5);
+                        dictionnaire.RechercherValue(coureur9);
+                        dictionnaire.Inserer(4, new Coureur(1, "Negan"),1);
+                        dictionnaire.Afficher();
+                        dictionnaire.SupprimerDictionary();
+                        dictionnaire.Afficher();
 
                         break;
 
                     case 2:
                         Generique_Queue queue = new Generique_Queue();
-                        Console.WriteLine("\nDans cet exemple illustrant la collection Queue<T>, nous utiliserons les noms des coureurs.\n");
-                        Console.WriteLine("\n------ Ajout des coureurs \n");
-                        queue.ajouter(coureur1);
-                        queue.ajouter(coureur2);
-                        queue.ajouter(coureur3);
-                        queue.ajouter(coureur4);
-                        queue.ajouter(coureur5);
-                        queue.ajouter(coureur6);
-                        queue.ajouter(coureur7);
-                        queue.ajouter(coureur8);
-                        queue.ajouter(coureur9);
-
-                        Console.WriteLine("\n------- Affichage de la queue------ \n");
-                        queue.afficherQueue();
-
-                        Console.WriteLine("\n------ Recherche du coureur Maggie ------\n");
-                        queue.rechercher(coureur1);
-
-                        Console.WriteLine("\n------ Suppression de Glenn ------\n");
-                        queue.supprimerS(coureur5);
-
-                        Console.WriteLine("\n------ Suppression d'Abraham en fonction de son emplacement ------ \n");
-                        queue.supprimerI(7);
-
-                        Console.WriteLine("\n------ Recherche de Glenn  ------ \n");
-                        queue.rechercher(coureur5);
-
-                        Console.WriteLine("\n------ Insertion de Glenn à l'emplacement 2  ------ \n");
-                        queue.inserer(coureur5, 2);
-
-                        Console.WriteLine("\n------ Affichage de la queue ------ \n");
-                        queue.afficherQueue();
-
-                        Console.WriteLine("\n------ Tri de la queue ------ \n");
-                        queue.trierQueue();
-
-                        Console.WriteLine("\n------ Affichage de la queue ------ \n");
-                        queue.afficherQueue();
-
-                        queue.supprimerQueue();
-                        Console.WriteLine("\n------ Affichage de la queue ------ \n");
-                        queue.afficherQueue();
+                        queue.Ajouter(coureur1);
+                        queue.Ajouter(coureur2);
+                        queue.Ajouter(coureur3);
+                        queue.Ajouter(coureur4);
+                        queue.Ajouter(coureur5);
+                        queue.Ajouter(coureur6);
+                        queue.Ajouter(coureur7);
+                        queue.Ajouter(coureur8);
+                        queue.Ajouter(coureur9);
+                        queue.Afficher();
+                        queue.Rechercher(coureur1);
+                        queue.Supprimer(coureur5);
+                        queue.SupprimerIndex(7);
+                        queue.Rechercher(coureur5);
+                        queue.Insérer(coureur5, 2);
+                        queue.Afficher();
+                        queue.Tri();
+                        queue.Afficher();
+                        queue.SupprimerQueue();
+                        queue.Afficher();
 
                         break;
                     case 3:
                         Generique_Stack stack = new Generique_Stack();
                         Console.WriteLine("\n------ Ajout des coureurs \n");
-                        stack.ajouter(coureur1);
-                        stack.ajouter(coureur2);
-                        stack.ajouter(coureur3);
-                        stack.ajouter(coureur4);
-                        stack.ajouter(coureur5);
-                        stack.ajouter(coureur6);
-                        stack.ajouter(coureur7);
-                        stack.ajouter(coureur8);
-                        stack.ajouter(coureur9);
+                        stack.Ajouter(coureur1);
+                        stack.Ajouter(coureur2);
+                        stack.Ajouter(coureur3);
+                        stack.Ajouter(coureur4);
+                        stack.Ajouter(coureur5);
+                        stack.Ajouter(coureur6);
+                        stack.Ajouter(coureur7);
+                        stack.Ajouter(coureur8);
+                        stack.Ajouter(coureur9);
 
                         Console.WriteLine("\n------- Suppression de Abraham------\n");
-                        stack.supprimerC(coureur7);
-                        stack.afficherStack();
+                        stack.Supprimer(coureur7);
+                        stack.Afficher();
 
 
                         Console.WriteLine("\n------- Ajout de Abraham en bas de la collection------\n");
-                        stack.inserer(coureur7, 1);
-                        stack.afficherStack();
+                        stack.Inserer(coureur7, 1);
+                        stack.Afficher();
 
                         Console.WriteLine("\n------- Recherche de Daryl------\n");
-                        stack.rechercher(coureur9);
-                        stack.afficherStack();
+                        stack.Rechercher(coureur9);
+                        stack.Afficher();
 
                         Console.WriteLine("\n------- Tri des coureurs------\n");
-                        stack.trierStack();
-                        stack.afficherStack();
+                        stack.Tri();
+                        stack.Afficher();
 
                         Console.WriteLine("\n------- Suppression de la collection------\n");
-                        stack.supprimerStack();
-                        stack.afficherStack();
+                        stack.SupprimerStack();
+                        stack.Afficher();
+                        
 
                         break;
 
@@ -192,22 +161,22 @@ namespace Partie3
                 {
                     case 1:
                         NonGenerique_Hashtable hashtable = new NonGenerique_Hashtable();
-                        hashtable.ajouter(coureur1, "Rhee");
-                        hashtable.ajouter(coureur1.Nom, true);
-                        hashtable.ajouter(coureur1.Nom, 15);
-                        hashtable.ajouter(coureur9, null);
-                        hashtable.ajouter(coureur8.Maillot, false);
-                        hashtable.ajouter(coureur8, "Paul Rovia");
-                        hashtable.ajouter(coureur5, "Rhee");
-                        hashtable.afficher();
-                        hashtable.rechercherValue("Rhee");
-                        hashtable.rechercherValue(null);
-                        hashtable.rechercherKey(coureur7);
-                        hashtable.rechercherKey(coureur9);
-                        hashtable.supprimerKey(coureur5);
-                        hashtable.afficher();
-                        hashtable.supprimerHashtable();
-                        hashtable.afficher();
+                        hashtable.Ajouter(coureur1, "Rhee");
+                        hashtable.Ajouter(coureur1.Nom, true);
+                        hashtable.Ajouter(coureur1.Nom, 15);
+                        hashtable.Ajouter(coureur9, null);
+                        hashtable.Ajouter(coureur8.Maillot, false);
+                        hashtable.Ajouter(coureur8, "Paul Rovia");
+                        hashtable.Ajouter(coureur5, "Rhee");
+                        hashtable.Afficher();
+                        hashtable.RechercherValue("Rhee");
+                        hashtable.RechercherValue(null);
+                        hashtable.RechercherKey(coureur7);
+                        hashtable.RechercherKey(coureur9);
+                        hashtable.SupprimerKey(coureur5);
+                        hashtable.Afficher();
+                        hashtable.SupprimerHashtable();
+                        hashtable.Afficher();
                         break;
 
                     case 2:

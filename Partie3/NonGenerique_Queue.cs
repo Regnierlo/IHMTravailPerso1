@@ -54,7 +54,7 @@ namespace Partie3
         /// <summary>
         /// Ajout d'un objet dans la collection
         /// </summary>
-        /// <param name="objet">Objet à ajouter</param>
+        /// <param name="objet">Objet à Ajouter</param>
         public void ajouter(Object objet)
         {
             Console.WriteLine("\n------ Ajout ------ \n");
@@ -65,11 +65,11 @@ namespace Partie3
         /// <summary>
         /// Insertion d'un objet à l'index donné
         /// </summary>
-        /// <param name="objet">Objet à ajouter</param>
+        /// <param name="objet">Objet à Ajouter</param>
         /// <param name="index">Index où l'on aimerait insérer notre objet</param>
         public void inserer(Object objet, int index)
         {
-            Console.WriteLine("\n------ Ajout ------ \n");
+            Console.WriteLine("\n------ Insertion ------ \n");
             Queue res = new Queue(); /// Queue temporaire
             if (index > _queue.Count) /// SI l'index donné est trop important, on ajoute l'objet à la fin de la collection
             {
@@ -98,7 +98,7 @@ namespace Partie3
         /// <summary>
         /// Suppression d'un objet
         /// </summary>
-        /// <param name="objet">L'objet à supprimer</param>
+        /// <param name="objet">L'objet à Supprimer</param>
         public void supprimer(Object objet)
         {
             Console.WriteLine("\n------ Suppression ------ \n");
@@ -132,7 +132,7 @@ namespace Partie3
                 foreach (Object entry in _queue)
                 {
                     if (entry.Equals(objet))
-                        Console.WriteLine("n°" + i + " : " + entry.ToString());
+                        Console.WriteLine("n°{0} : {1} .\n", i, entry.ToString());
                     i++;
                 }
             else

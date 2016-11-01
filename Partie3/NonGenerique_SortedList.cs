@@ -56,8 +56,8 @@ namespace Partie3
         /// <summary>
         /// Ajout d'un objet dans la collection
         /// </summary>
-        /// <param name="key">La clé du couple clé/valeur que l'on veut ajouter</param>
-        /// <param name="value">La valeur  du couple clé/valeur que l'on veut ajouter</param>
+        /// <param name="key">La clé du couple clé/valeur que l'on veut Ajouter</param>
+        /// <param name="value">La valeur  du couple clé/valeur que l'on veut Ajouter</param>
         public void ajouter(Object key, Object value)
         {
             Console.WriteLine("\n------ Ajout ------ \n");
@@ -85,7 +85,7 @@ namespace Partie3
         /// <summary>
         /// Suppression de l'objet en fonction de sa clé.
         /// </summary>
-        /// <param name="key">La clé du couple clé/valeur qu'on aimerait supprimer</param>
+        /// <param name="key">La clé du couple clé/valeur qu'on aimerait Supprimer</param>
         public void supprimerKey(Object key)
         {
             Console.WriteLine("\n------ Suppression ------ \n");
@@ -101,7 +101,7 @@ namespace Partie3
         /// <summary>
         /// Suppression d'une entrée de la collection en fonction de son index
         /// </summary>
-        /// <param name="i">Index de l'objet qu'on aimerait supprimer</param>
+        /// <param name="i">Index de l'objet qu'on aimerait Supprimer</param>
         public void supprimerIndex(int i)
         {
             Console.WriteLine("\n------ Suppression ------ \n");

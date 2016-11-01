@@ -42,7 +42,7 @@ namespace Partie3
         /// <summary>
         /// Affichage de la collection
         /// </summary>
-        public void afficher()
+        public void Afficher()
         {
             Console.WriteLine("\n----- Affichage de la collection -----\n");
             if (_hashtable.Count > 0)
@@ -55,9 +55,9 @@ namespace Partie3
         /// <summary>
         /// Ajout d'un objet dans la collection
         /// </summary>
-        /// <param name="key">La clé du couple clé/valeur que l'on veut ajouter</param>
-        /// <param name="value">La valeur  du couple clé/valeur que l'on veut ajouter</param>
-        public void ajouter(Object key, Object value)
+        /// <param name="key">La clé du couple clé/valeur que l'on veut Ajouter</param>
+        /// <param name="value">La valeur  du couple clé/valeur que l'on veut Ajouter</param>
+        public void Ajouter(Object key, Object value)
         {
             Console.WriteLine("\n------ Ajout ------ \n");
             try
@@ -74,7 +74,7 @@ namespace Partie3
         /// <summary>
         /// Suppression de la collection complète
         /// </summary>
-        public void supprimerHashtable()
+        public void SupprimerHashtable()
         {
             Console.WriteLine("\n------ Suppression ------ \n");
             _hashtable.Clear();
@@ -83,8 +83,8 @@ namespace Partie3
         /// <summary>
         /// Suppression de l'objet en fonction de sa clé
         /// </summary>
-        /// <param name="key">La clé du couple clé/valeur qu'on aimerait supprimer</param>
-        public void supprimerKey(Object key)
+        /// <param name="key">La clé du couple clé/valeur qu'on aimerait Supprimer</param>
+        public void SupprimerKey(Object key)
         {
             Console.WriteLine("\n------ Suppression ------ \n");
             if (_hashtable.ContainsKey(key))
@@ -100,7 +100,7 @@ namespace Partie3
         /// Recherche dans la collection en fonction de la clé du couple clé/valeur
         /// </summary>
         /// <param name="key">La clé du couple clé/valeur que l'on aimerait retrouver</param>
-        public void rechercherKey(Object key)
+        public void RechercherKey(Object key)
         {
             Console.WriteLine("\n------ Recherche ------ \n");
             if (_hashtable.ContainsKey(key))
@@ -113,13 +113,12 @@ namespace Partie3
         /// Recherche dans la collection en fonction de la valeur du couple clé/valeur
         /// </summary>
         /// <param name="value">La valeur du couple clé/valeur que l'ont aimerait retrouver</param>
-        public void rechercherValue(Object value)
+        public void RechercherValue(Object value)
         {
-            int i = 1 ;
-            Console.WriteLine("\n------ Recherche ------ \n");
-                
+            Console.WriteLine("\n------ Recherche ------ \n");  
             if (_hashtable.ContainsValue(value))
             {
+                int i = 1;
                 foreach (DictionaryEntry entry in _hashtable)
                 {
                     if (entry.Value != null)

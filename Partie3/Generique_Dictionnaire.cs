@@ -6,125 +6,181 @@ using System.Threading.Tasks;
 
 namespace Partie3
 {
-    // Un dictionnaire est une collection de paires clé/valeur, chaque clé étant unique
-
-    public class Generique_Dictionnaire
+    
+    class Generique_Dictionnaire
     {
-        // Exemple : numéro de maillots de coureurs
-        // Dictionary <TKey, TValue>
-        private Dictionary<Int32, string> _listeCoureurs;
+        
+        private Dictionary<Int32, Coureur> _dictionary;
 
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
         public Generique_Dictionnaire()
         {
-            this._listeCoureurs = new Dictionary<Int32, string>();
+            this._dictionary = new Dictionary<Int32, Coureur>();
         }
 
         /// <summary>
         /// Constructeur avec paramètre
         /// </summary>
-        /// <param name="res">Si on a déjà crée un dictionnaire</param>
-        public Generique_Dictionnaire(Dictionary<Int32, string> res){
-            this._listeCoureurs = res;
+        /// <param name="res">La collection qu'on copiera pour construire notre instance</param>
+        public Generique_Dictionnaire(Dictionary<Int32, Coureur> res){
+            this._dictionary = res;
         }
 
         /// <summary>
         /// Accesseurs
         /// </summary>
-        public Dictionary<Int32, string> ListeCoureurs
+        public Dictionary<Int32, Coureur> Dictionary
         {
-            get { return _listeCoureurs; }
-            set { _listeCoureurs = value; }
+            get { return _dictionary; }
+            set { _dictionary = value; }
         }
 
+        // ----------------------------------------------- METHODES
+
         /// <summary>
-        /// Permet d'afficher la collection en entière
+        /// Permet d'Afficher la collection en entière
         /// </summary>
-        public void affichageDico()
+        public void Afficher()
         {
-            if (_listeCoureurs.Count > 0)
-                foreach (KeyValuePair<int, string> entry in _listeCoureurs)
-                {
-                    Console.WriteLine("\n{0} : {1} \n", entry.Value, entry.Key);
-                }
+            Console.WriteLine("\n----- Affichage de la collection -----\n");
+            if (_dictionary.Count > 0)
+                foreach (KeyValuePair<Int32, Coureur> entry in _dictionary)
+                    Console.WriteLine("{0} : {1}\n", entry.Value, entry.Key);
             else
-                Console.WriteLine("\nLa collection est vide.\n");
+                Console.WriteLine("x-x La collection est vide.\n");
         }
         
         /// <summary>
-        /// Permet d'ajouter un couple clé/valeur dans la collection
+        /// Permet d'Ajouter un couple clé/valeur dans la collection
         /// </summary>
         /// <param name="nom">La chaîne de caractère correspondant à la valeur dans le couple clé/valeur</param>
         /// <param name="numero">Le int correspondant à la clé dans le couple clé/valeur</param>
-        public void AjoutDico(string nom, int numero){
+        public void Ajouter(Int32 key, Coureur value)
+        {
+            Console.WriteLine("\n------ Ajout ------ \n");
             try
             {
-                _listeCoureurs.Add(numero, nom);
-                Console.WriteLine("--> "+nom + " : " + numero + " a été ajouté(e).\n");
+                _dictionary.Add(key, value);
+                Console.WriteLine("Le couple {0} / {1} a bien été ajouté.\n", key, value);
             }
             catch (ArgumentException)
             {
-                // La clé qui doit être unique est déjà utilisée dans la collection
-                Console.WriteLine("--x Le numéro a déjà été donné.\n");
+                Console.WriteLine("x-x Le numéro a déjà été donné.\n");
             }
         }
 
         /// <summary>
-        /// Permet de supprimer un couple clé/valeur en fonction de la clé
+        /// Permet d'insérer un objet dans une queue à l'emplacement voulu.
+        /// </summary>
+        /// <param name="key">La clé du couple clé/valeur que l'on veut insérer</param>
+        /// <param name="value">La valeur du couple clé/valeur que l'on veut insérer</param>
+        /// <param name="index">L'endroit de la collection où l'on veut insérer notre objet</param>
+        public void Inserer(Int32 key, Coureur value, int index)
+        {
+            Console.WriteLine("\n------ Insertion ------ \n");
+            Dictionary<Int32, Coureur> res = new Dictionary<Int32, Coureur>();
+            if (index > _dictionary.Count)
+            {
+                res = _dictionary;
+                res.Add(key, value);
+                Console.WriteLine("{0} / {1} a été ajouté à la fin de la collection.\n", key, value);
+            }
+            else
+            {
+                int i = 1;
+                foreach (KeyValuePair<Int32, Coureur> entry in _dictionary)
+                {
+                    if (i == index)
+                    {
+                        Console.WriteLine("{0} / {1} a été ajouté à l'index {1}.\n", key, value, i);
+                        res.Add(key, value);
+                        i++;
+                    }
+                    res.Add(entry.Key, entry.Value);
+                    i++;
+                }
+            }
+            _dictionary = res;
+        }
+
+        /// <summary>
+        /// Permet de Supprimer un couple clé/valeur en fonction de la clé
         /// </summary>
         /// <param name="numero">Le int correspondant à la clé du couple clé/valeur que l'on souhaite enlever de la collection</param>
-        public void SupprimerDico(int numero)
+        public void Supprimer(int key)
         {
-            if (_listeCoureurs.ContainsKey(numero))
+            Console.WriteLine("\n------ Suppression ------ \n");
+            if (_dictionary.ContainsKey(key))
             /// On vérifie dans un premier temps si la collection contient la clé.
             {
-                _listeCoureurs.Remove(numero);
-                Console.WriteLine("Le coureur avec le maillot n° " + numero + " est disqualifié.\n");
+                _dictionary.Remove(key);
+                Console.WriteLine("Le couple ayant la clé {0} a été supprimé.\n",key);
             }
             else
-                Console.WriteLine("La collection ne comporte aucune valeur ayant comme clé le numéro indiqué.\n");
+                Console.WriteLine("x-x La collection ne comporte aucun couple ayant comme clé {0}.\n", key);
         }
 
         /// <summary>
-        /// Permet de supprimer la collection entière.
+        /// Permet de Supprimer la collection entière.
         /// </summary>
-        public void SupprimerDicoEntier()
+        public void SupprimerDictionary()
         {
-            _listeCoureurs.Clear();
+            Console.WriteLine("\n------ Suppression ------ \n");
+            _dictionary.Clear();
         }
         
-        // --------------------------- Rechercher
         /// <summary>
-        /// Permet de rechercher dans une collection un couple clé/valeur en fonction de la clé
+        /// Permet de RechercherKey dans une collection un couple clé/valeur en fonction de la clé
         /// </summary>
         /// <param name="numero">Le paramètre correspondant à la clé que l'on souhaite retrouver.</param>
-        public void RechercheNumero(int numero)
+        public void RechercherKey(int key)
         {
-            string value="";
-
-            if (_listeCoureurs.TryGetValue(numero, out value))
+            Console.WriteLine("\n------ Recherche ------ \n");  
+            Coureur value = new Coureur();
+            if (_dictionary.TryGetValue(key, out value))
             {
-                Console.WriteLine("Le coureur correspondant au maillot " + numero + " est " + value + "\n");
+                Console.WriteLine("Le coureur correspondant au maillot {0} est {1}.\n", key, value);
             }
             else
-                Console.WriteLine("Le coureur correspondant au maillot " + numero + " est indisponible pour le moment\n");
+                Console.WriteLine("x-x Il n'y a aucune clé correspondante à {0}.\n",key);
+        }
+
+        /// <summary>
+        /// Recherche d'un couple clé/valeur grâce à la valeur
+        /// </summary>
+        /// <param name="value">La valeur des couples clé/valeur que l'on veut récupérer</param>
+        public void RechercherValue(Coureur value)
+        {
+            Console.WriteLine("\n------ Recherche ------ \n");
+            if (_dictionary.ContainsValue(value))
+            {
+                int i = 1 ;
+                foreach(KeyValuePair<int, Coureur> entry in _dictionary)
+                {
+                    if (entry.Value.Equals(value))
+                        Console.WriteLine("n°{0} : {1}\n", i, entry.ToString());
+                    i++;
+                }
+            }
+            else
+                Console.WriteLine("x-x Il n'y a aucune valeur correspondante à {0}.\n", value);
         }
 
         /// <summary>
         /// Trier une collection dans l'ordre croissant des clés
         /// </summary>
-        public void TrierDico()
+        public void TriKey()
         {
-            Dictionary<Int32, string> res = new Dictionary<int, string>();
-            string valeurRes = "";
+            Dictionary<Int32, Coureur> res = new Dictionary<Int32, Coureur>();
+            Coureur valeurRes = new Coureur();
             int min = Int32.MaxValue;
             int max = Int32.MinValue;
 
-            for (int i = 0; i < _listeCoureurs.Count; i++)
+            for (int i = 0; i < _dictionary.Count; i++)
             {
-                foreach (KeyValuePair<int, string> entry in _listeCoureurs)
+                foreach (KeyValuePair<Int32, Coureur> entry in _dictionary)
                 {
                     if (entry.Key < min && entry.Key > max){
                         min = entry.Key;
@@ -135,7 +191,9 @@ namespace Partie3
                 max = min;
                 min = Int32.MaxValue;
             }
-            _listeCoureurs = res;
+            _dictionary = res;
         }
+
+
     }
 }

@@ -18,9 +18,9 @@ namespace Partie3
         }
 
         /// <summary>
-        /// Constructeur avec paramètre
+        /// Constructeur par copie
         /// </summary>
-        /// <param name="res"></param>
+        /// <param name="res">La collection qu'on copiera pour construire notre instance</param>
         public Generique_Queue(Queue<Coureur> res){
             this._queue = res;
         }
@@ -34,78 +34,78 @@ namespace Partie3
             set { _queue = value; }
         }
 
-   
+        // ----------------------------------------------- METHODES
+
         /// <summary>
-        /// Permet d'afficher les objets de la queue en fonction de leur place dans celle-ci.
+        /// Affichage de la collection
         /// </summary>
-        public void afficherQueue()
+        public void Afficher()
         {
-            int res = 1;
-            if (_queue.Count != 0)
-            {
+            Console.WriteLine("\n----- Affichage de la collection -----\n");
+            int i = 1;
+            if (_queue.Count > 0)
                 foreach (Coureur entry in _queue)
                 {
-                    if (res == 1)
-                        Console.WriteLine("---- Premier (1) de la queue : " + entry.ToString()+"\n");
-                    else
-                        if (res == _queue.Count)
-                            Console.WriteLine("---- Dernier (" + res + ") de la queue : " + entry.ToString()+"\n");
-                        else
-                            Console.WriteLine("---- " + res + " : " + entry.ToString()+"\n");
-                    res++;
+                    Console.WriteLine("     {0} : {1}\n", i, entry.ToString());
+                    i++;
                 }
-            }
             else
-                Console.WriteLine("---- La queue est vide.\n");
+                Console.WriteLine("x-x La queue est vide.\n");
         }
 
         /// <summary>
-        /// Permet d'ajouter un objet dans une queue.
+        /// Ajout d'un objet dans la collection
         /// </summary>
-        /// <param name="objet">L'objet que l'on souhaite ajouter</param>
-        public void ajouter(Coureur objet)
+        /// <param name="objet">L'objet que l'on souhaite Ajouter</param>
+        public void Ajouter(Coureur objet)
         {
+            Console.WriteLine("\n------ Ajout ------ \n");
             _queue.Enqueue(objet);
-            Console.WriteLine(objet.ToString() + " a été ajouté.\n");
+            Console.WriteLine("{0} a été ajouté.\n", objet.ToString());
         }
 
         /// <summary>
         /// Permet d'insérer un objet dans une queue à l'emplacement voulu.
         /// </summary>
-        /// <param name="objet">L'objet que l'on souhaite ajouter dans la queue</param>
-        /// <param name="numero">L'emplacement dans la queue où l'on souhaite ajouter l'objet</param>
+        /// <param name="objet">L'objet que l'on souhaite Ajouter dans la queue</param>
+        /// <param name="numero">L'emplacement dans la queue où l'on souhaite Ajouter l'objet</param>
         /// <returns>la queue avec l'objet inséré</returns>
-        public void inserer(Coureur objet, int numero)
+        public void Insérer(Coureur objet, int index)
         {
+            Console.WriteLine("\n------ Insertion ------ \n");
             Queue<Coureur> res = new Queue<Coureur>();
-            int i = 1;
-            foreach (Coureur entry in _queue)
+            if (index > _queue.Count) 
             {
-                if (i == numero)
+                res = _queue;
+                res.Enqueue(objet);
+                Console.WriteLine("{0} a été ajouté à la fin de la collection.\n", objet.ToString());
+            }
+            else
+            {
+                int i = 1;
+                foreach (Coureur entry in _queue)
                 {
-                    res.Enqueue(objet);
+                    if (i == index)
+                    {
+                        Console.WriteLine("{0} a été ajouté à l'index {1}.\n", objet.ToString(), i);
+                        res.Enqueue(objet);
+                        i++;
+                    }
+                    res.Enqueue(entry);
                     i++;
                 }
-                res.Enqueue(entry);
-                i++;
             }
-
-            if (numero > _queue.Count)
-            {
-                Console.WriteLine("Le numéro indiqué est supérieur au nombre d'éléments présents dans la collection. L'objet sera ajouté à la fin de la queue\n.");
-                res.Enqueue(objet);
-            }
-
             _queue = res;
         }
 
         /// <summary>
         /// Permet de trier la queue dans l'ordre alphabétique
         /// </summary>
-        public void trierQueue()
+        public void Tri()
         {
+            Console.WriteLine("\n------ Tri ------ \n");
             Queue<Coureur> res = new Queue<Coureur>();
-            _queue = triRecursif(_queue, res, _queue.Count);
+            _queue = TriRecursif(_queue, res, _queue.Count);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Partie3
         /// <param name="garde"></param>
         /// <param name="nb"></param>
         /// <returns></returns>
-        public Queue<Coureur> triRecursif(Queue<Coureur> rejet, Queue<Coureur> garde, int nb)
+        public Queue<Coureur> TriRecursif(Queue<Coureur> rejet, Queue<Coureur> garde, int nb)
         {
             Coureur coureurT = rejet.Peek();
             rejet.Dequeue();
@@ -135,41 +135,19 @@ namespace Partie3
                 }
                 garde.Enqueue(coureurT);
                 if (rejet.Count > 0)
-                    garde = triRecursif(rejet, garde, nb);
+                    garde = TriRecursif(rejet, garde, nb);
 
-            } while (garde.Count < (nb - 1));
+            } while ( garde.Count < (nb - 1) );
             return garde;
         }
 
         /// <summary>
-        /// Récupérer un objet en fonction de son emplacement dans la queue
+        /// Permet de Supprimer un des objets en fonction de lui-même (ici son nom)
         /// </summary>
-        /// <param name="qs">La queue que l'on souhaite regarder</param>
-        /// <param name="numero">Le numéro correspondant à l'objet que l'on souhaiterait récupérer</param>
-        /// <returns>L'objet (ici un string) que l'on souhaitaitrécupérer.</returns>
-        private Coureur recuperer(Queue<Coureur> qs, int numero)
+        /// <param name="objet">L'objet que l'on souhaiterait Supprimer</param>
+        public void Supprimer(Coureur objet)
         {
-            int i = 1;
-            Coureur res = new Coureur();
-            if (numero > qs.Count)
-                Console.WriteLine("Pas d'objet à cet emplacement.");
-            else
-                foreach (Coureur entry in qs)
-                {
-                    if (i == numero)
-                        res = entry;
-                    i++;
-                }
-            return res;
-        }
-
-        /// <summary>
-        /// Permet de supprimer un des objets en fonction de lui-même (ici son nom)
-        /// </summary>
-        /// <param name="objet">L'objet que l'on souhaiterait supprimer</param>
-        ///
-        public void supprimerS(Coureur objet)
-        {
+            Console.WriteLine("\n------ Suppression ------ \n");
             if (_queue.Contains(objet))
             {   
                 Queue<Coureur> res = new Queue<Coureur>();
@@ -177,49 +155,61 @@ namespace Partie3
                     if (!entry.Equals(objet))
                         res.Enqueue(entry);
                 _queue = res;
+                Console.WriteLine("L'objet {0} a été supprimé.\n", objet.ToString());
             }
+            else
+                Console.WriteLine("x-x La collection ne contient pas cet objet {0}.\n", objet.ToString());
         }
 
         /// <summary>
-        /// Permet de supprimer un des objets en fonction de son emplacement dans la queue
+        /// Permet de Supprimer un des objets en fonction de son emplacement dans la queue
         /// </summary>
-        /// <param name="numero">L'emplacement correspondant à l'objet que l'on souhaiterait supprimer</param>
-        public void supprimerI(int numero)
+        /// <param name="numero">L'emplacement correspondant à l'objet que l'on souhaiterait Supprimer</param>
+        public void SupprimerIndex(int index)
         {
-            int temp = 1;
-            Queue<Coureur> res = new Queue<Coureur>();
-            foreach (Coureur entry in _queue)
+            Console.WriteLine("\n------ Suppression par l'index ------ \n");
+            if (index > _queue.Count)
+                Console.WriteLine("Il n'y a rien à cet emplacement.\n");
+            else
             {
-                if (temp != numero)
-                    res.Enqueue(entry);
-                temp++;
+                int temp = 1;
+                Queue<Coureur> res = new Queue<Coureur>();
+                foreach (Coureur entry in _queue)
+                {
+                    if (temp != index)
+                        res.Enqueue(entry);
+                    else
+                        Console.WriteLine("L'objet {0} a été supprimé.\n", entry.ToString()); 
+                    temp++;
+                }
+                _queue = res;
             }
-            _queue = res;
         }
 
         /// <summary>
-        /// Permet de supprimer la queue entièrement
+        /// Permet de Supprimer la queue entièrement
         /// </summary>
-         public void supprimerQueue()
+         public void SupprimerQueue()
         {
+            Console.WriteLine("\n------ Suppression ------ \n");
             _queue.Clear();
         }
 
         /// <summary>
-        /// Permet de rechercher un objet en fonction de sa valeur
+        /// Permet de RechercherKey un objet en fonction de sa valeur
         /// </summary>
         /// <param name="objet">L'objet que l'on aimerait retrouver</param>
-        public void rechercher(Coureur objet)
+        public void Rechercher(Coureur objet)
         {
+            Console.WriteLine("\n------ Recherche ------ \n");
             if (_queue.Contains(objet))
             {
                 for (int i = 0; i < _queue.Count; i++)
                     if (_queue.ElementAt(i).Equals(objet))
-                        Console.WriteLine("n°" + i + " : " + objet.ToString() + "\n");
+                        Console.WriteLine("n°{0} : {1}\n", i, _queue.ElementAt(i));
             }
             else
-                Console.WriteLine("\n" + objet + " n'est pas dans la queue.\n");
+                Console.WriteLine("\n {0} n'est pas dans la queue.\n", objet.ToString());
         }
-
     }
 }
