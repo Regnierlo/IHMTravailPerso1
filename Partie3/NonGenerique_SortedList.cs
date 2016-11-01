@@ -10,8 +10,6 @@ namespace Partie3
     class NonGenerique_SortedList
     {
         private SortedList _sortedList;
-        // Représente une collection de paires clé/valeur 
-        // triées par les clés et accessible par clé et par index.
 
         /// <summary>
         /// Constructeur par défaut
@@ -19,8 +17,7 @@ namespace Partie3
         public NonGenerique_SortedList()
         {
             _sortedList = new SortedList();
-            // La capacité initiale par défaut
-            // Triée suivant le IComparable
+            // Collection triée suivant le IComparable
         }
 
         /// <summary>
