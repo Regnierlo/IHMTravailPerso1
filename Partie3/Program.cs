@@ -36,9 +36,9 @@ namespace Partie3
 
             if (nombre == 1)
             {
-                Console.WriteLine("--- 1 = Un dictionnaire correspondant à la liste des coureurs nom /n° maillot\n");
-                Console.WriteLine("--- 2 = Une queue<Coureur>\n");
-                Console.WriteLine("--- 3 = Un stack<Coureur>\n");
+                Console.WriteLine("\n    1 = Utilisation de Dictionary < Int32, Coureur >\n");
+                Console.WriteLine("    2 = Utilisation de Queue < Coureur >\n");
+                Console.WriteLine("    3 = Utilisation de Stack < Coureur >\n");
                 try
                 {
                     nombre = int.Parse(Console.In.ReadLine());
@@ -92,7 +92,7 @@ namespace Partie3
                         queue.Supprimer(coureur5);
                         queue.SupprimerIndex(7);
                         queue.Rechercher(coureur5);
-                        queue.Insérer(coureur5, 2);
+                        queue.Inserer(coureur5, 2);
                         queue.Afficher();
                         queue.Tri();
                         queue.Afficher();
@@ -102,7 +102,6 @@ namespace Partie3
                         break;
                     case 3:
                         Generique_Stack stack = new Generique_Stack();
-                        Console.WriteLine("\n------ Ajout des coureurs \n");
                         stack.Ajouter(coureur1);
                         stack.Ajouter(coureur2);
                         stack.Ajouter(coureur3);
@@ -112,29 +111,16 @@ namespace Partie3
                         stack.Ajouter(coureur7);
                         stack.Ajouter(coureur8);
                         stack.Ajouter(coureur9);
-
-                        Console.WriteLine("\n------- Suppression de Abraham------\n");
                         stack.Supprimer(coureur7);
                         stack.Afficher();
-
-
-                        Console.WriteLine("\n------- Ajout de Abraham en bas de la collection------\n");
-                        stack.Inserer(coureur7, 1);
+                        stack.Inserer(coureur7, 4);
                         stack.Afficher();
-
-                        Console.WriteLine("\n------- Recherche de Daryl------\n");
                         stack.Rechercher(coureur9);
                         stack.Afficher();
-
-                        Console.WriteLine("\n------- Tri des coureurs------\n");
                         stack.Tri();
                         stack.Afficher();
-
-                        Console.WriteLine("\n------- Suppression de la collection------\n");
                         stack.SupprimerStack();
                         stack.Afficher();
-                        
-
                         break;
 
                     default:
@@ -181,45 +167,45 @@ namespace Partie3
 
                     case 2:
                         NonGenerique_SortedList sortedList = new NonGenerique_SortedList();
-                        sortedList.ajouter(coureur2, coureur1);
-                        sortedList.ajouter(coureur3, coureur4);
-                        sortedList.ajouter(coureur9, coureur8.Maillot);
-                        sortedList.ajouter(coureur8, coureur7.Nom);
-                        sortedList.ajouter(coureur1, null);
-                        sortedList.afficher();
-                        sortedList.supprimerIndex(sortedList.recupererIndexKey(coureur9));
-                        sortedList.afficher();
-                        sortedList.supprimerKey(coureur8);
-                        sortedList.afficher();
-                        sortedList.ajouter(coureur1, coureur8);
-                        sortedList.ajouter(coureur7, coureur4);
-                        sortedList.rechercherKey(coureur8);
-                        sortedList.rechercherValue(coureur4);
-                        sortedList.ajouter(coureur4, null);
-                        sortedList.rechercherValue(null);
-                        sortedList.rechercher(coureur1);
-                        sortedList.supprimerCollection();
-                        sortedList.afficher();
+                        sortedList.Ajouter(coureur2, coureur1);
+                        sortedList.Ajouter(coureur3, coureur4);
+                        sortedList.Ajouter(coureur9, coureur8.Maillot);
+                        sortedList.Ajouter(coureur8, coureur7.Nom);
+                        sortedList.Ajouter(coureur1, null);
+                        sortedList.Afficher();
+                        sortedList.SupprimerIndex(sortedList.RecupererIndexKey(coureur9));
+                        sortedList.Afficher();
+                        sortedList.SupprimerKey(coureur8);
+                        sortedList.Afficher();
+                        sortedList.Ajouter(coureur1, coureur8);
+                        sortedList.Ajouter(coureur7, coureur4);
+                        sortedList.RechercherKey(coureur8);
+                        sortedList.RechercherValue(coureur4);
+                        sortedList.Ajouter(coureur4, null);
+                        sortedList.RechercherValue(null);
+                        sortedList.Rechercher(coureur1);
+                        sortedList.SupprimerCollection();
+                        sortedList.Afficher();
                         break;
 
                     case 3:
                         NonGenerique_Queue queue = new NonGenerique_Queue();
-                        queue.ajouter(coureur1);
-                        queue.ajouter(true);
-                        queue.ajouter(coureur7.Nom);
-                        queue.ajouter(coureur4.Nom + " a comme numéro de maillot le n°  " + coureur4.Maillot);
-                        queue.afficher();
-                        queue.inserer("Negan", 2);
-                        queue.afficher();
-                        queue.rechercher("Negan");
-                        queue.inserer(true, 2);
-                        queue.afficher();
-                        queue.rechercher(true);
-                        queue.supprimer(true);
-                        queue.rechercher(true);
-                        queue.afficher();
-                        queue.supprimerQueue();
-                        queue.afficher();
+                        queue.Ajouter(coureur1);
+                        queue.Ajouter(true);
+                        queue.Ajouter(coureur7.Nom);
+                        queue.Ajouter(coureur4.Nom + " a comme numéro de maillot le n°  " + coureur4.Maillot);
+                        queue.Afficher();
+                        queue.Inserer("Negan", 2);
+                        queue.Afficher();
+                        queue.Rechercher("Negan");
+                        queue.Inserer(true, 2);
+                        queue.Afficher();
+                        queue.Rechercher(true);
+                        queue.Supprimer(true);
+                        queue.Rechercher(true);
+                        queue.Afficher();
+                        queue.SupprimerQueue();
+                        queue.Afficher();
                         break;
 
                     default: Console.WriteLine("Le numéro tapé ne correspond à rien.");

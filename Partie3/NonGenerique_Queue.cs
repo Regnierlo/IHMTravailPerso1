@@ -41,7 +41,7 @@ namespace Partie3
         /// <summary>
         /// Affichage de la collection
         /// </summary>
-        public void afficher()
+        public void Afficher()
         {
             Console.WriteLine("\n----- Affichage de la collection -----\n");
             if (_queue.Count > 0)
@@ -55,7 +55,7 @@ namespace Partie3
         /// Ajout d'un objet dans la collection
         /// </summary>
         /// <param name="objet">Objet à Ajouter</param>
-        public void ajouter(Object objet)
+        public void Ajouter(Object objet)
         {
             Console.WriteLine("\n------ Ajout ------ \n");
             _queue.Enqueue(objet);
@@ -67,7 +67,7 @@ namespace Partie3
         /// </summary>
         /// <param name="objet">Objet à Ajouter</param>
         /// <param name="index">Index où l'on aimerait insérer notre objet</param>
-        public void inserer(Object objet, int index)
+        public void Inserer(Object objet, int index)
         {
             Console.WriteLine("\n------ Insertion ------ \n");
             Queue res = new Queue(); /// Queue temporaire
@@ -99,7 +99,7 @@ namespace Partie3
         /// Suppression d'un objet
         /// </summary>
         /// <param name="objet">L'objet à Supprimer</param>
-        public void supprimer(Object objet)
+        public void Supprimer(Object objet)
         {
             Console.WriteLine("\n------ Suppression ------ \n");
             if (_queue.Contains(objet))
@@ -118,13 +118,13 @@ namespace Partie3
         /// <summary>
         /// Suppression de la collection entière
         /// </summary>
-        public void supprimerQueue()
+        public void SupprimerQueue()
         {
             Console.WriteLine("\n------ Suppression ------ \n");
             _queue.Clear();
         }
 
-        public void rechercher(Object objet)
+        public void Rechercher(Object objet)
         {
             Console.WriteLine("\n------ Recherche ------ \n");
             int i = 1 ;

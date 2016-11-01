@@ -75,24 +75,20 @@ namespace Partie3
             Stack<Coureur> res = new Stack<Coureur>();
             if (index > _stack.Count)
             {
-                res = _stack;
                 res.Push(objet);
                 Console.WriteLine("{0} a été ajouté à la fin de la collection.\n", objet.ToString());
+                index = -1;
             }
             else
+                index--;
+            for (int i = _stack.Count-1 ; i >= 0; i--)
             {
-                int i = 1;
-                foreach (Coureur entry in _stack)
+                res.Push(_stack.ElementAt(i));
+                if (i == index)
                 {
-                    if (i == index)
-                    {
-                        Console.WriteLine("{0} a été ajouté à l'index {1}.\n", objet.ToString(), i);
-                        res.Push(objet);
-                        i++;
-                    }
-                    res.Push(entry);
-                    i++;
-                }
+                    Console.WriteLine("{0} a été ajouté à l'index {1}.\n", objet.ToString(), (index+1));
+                    res.Push(objet);
+                }  
             }
             _stack = res;
         }

@@ -43,7 +43,7 @@ namespace Partie3
         /// <summary>
         /// Affiche la collection entièrement.
         /// </summary>
-        public void afficher()
+        public void Afficher()
         {
             Console.WriteLine("\n----- Affichage de la collection -----\n");
             if (_sortedList.Count > 0)
@@ -58,7 +58,7 @@ namespace Partie3
         /// </summary>
         /// <param name="key">La clé du couple clé/valeur que l'on veut Ajouter</param>
         /// <param name="value">La valeur  du couple clé/valeur que l'on veut Ajouter</param>
-        public void ajouter(Object key, Object value)
+        public void Ajouter(Object key, Object value)
         {
             Console.WriteLine("\n------ Ajout ------ \n");
             try
@@ -77,7 +77,7 @@ namespace Partie3
         /// </summary>
         /// <param name="key">La clé de l'objet pour lequel on aimerait connaître l'index</param>
         /// <returns>L'index de l'objet</returns>
-        public int recupererIndexKey(Object key)
+        public int RecupererIndexKey(Object key)
         {
             return _sortedList.IndexOfKey(key);
         }
@@ -86,7 +86,7 @@ namespace Partie3
         /// Suppression de l'objet en fonction de sa clé.
         /// </summary>
         /// <param name="key">La clé du couple clé/valeur qu'on aimerait Supprimer</param>
-        public void supprimerKey(Object key)
+        public void SupprimerKey(Object key)
         {
             Console.WriteLine("\n------ Suppression ------ \n");
             if (_sortedList.Contains(key))
@@ -102,7 +102,7 @@ namespace Partie3
         /// Suppression d'une entrée de la collection en fonction de son index
         /// </summary>
         /// <param name="i">Index de l'objet qu'on aimerait Supprimer</param>
-        public void supprimerIndex(int i)
+        public void SupprimerIndex(int i)
         {
             Console.WriteLine("\n------ Suppression ------ \n");
             if (i > _sortedList.Count)
@@ -117,7 +117,7 @@ namespace Partie3
         /// <summary>
         /// Suppression de la collection complète
         /// </summary>
-        public void supprimerCollection()
+        public void SupprimerCollection()
         {
             Console.WriteLine("\n------ Suppression ------ \n");
             _sortedList.Clear();
@@ -127,7 +127,7 @@ namespace Partie3
         /// Recherche dans la collection en fonction de la clé du couple clé/valeur
         /// </summary>
         /// <param name="key">La clé du couple clé/valeur que l'on aimerait retrouver</param>
-        public void rechercherKey(Object key)
+        public void RechercherKey(Object key)
         {
             Console.WriteLine("\n------ Recherche ------ \n"); 
             if (_sortedList.ContainsKey(key))
@@ -140,7 +140,7 @@ namespace Partie3
         /// Recherche dans la collection en fonction de l'objet en lui-même
         /// </summary>
         /// <param name="couple">Le couple clé/valeur que l'on aimerait retrouver</param>
-        public void rechercher(Object objet)
+        public void Rechercher(Object objet)
         {
             Console.WriteLine("\n------ Recherche ------ \n"); 
             if (_sortedList.Contains(objet))
@@ -164,7 +164,7 @@ namespace Partie3
         /// Recherche dans la collection en fonction de la valeur du couple clé/valeur
         /// </summary>
         /// <param name="value">La valeur du couple clé/valeur que l'ont aimerait retrouver</param>
-        public void rechercherValue(Object value)
+        public void RechercherValue(Object value)
         {
             Console.WriteLine("\n------ Recherche ------ \n"); 
             if (!_sortedList.ContainsValue(value))

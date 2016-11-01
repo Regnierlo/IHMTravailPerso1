@@ -70,7 +70,7 @@ namespace Partie3
         /// <param name="objet">L'objet que l'on souhaite Ajouter dans la queue</param>
         /// <param name="numero">L'emplacement dans la queue où l'on souhaite Ajouter l'objet</param>
         /// <returns>la queue avec l'objet inséré</returns>
-        public void Insérer(Coureur objet, int index)
+        public void Inserer(Coureur objet, int index)
         {
             Console.WriteLine("\n------ Insertion ------ \n");
             Queue<Coureur> res = new Queue<Coureur>();
