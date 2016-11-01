@@ -207,6 +207,23 @@ namespace Partie3
                         break;
 
                     case 2:
+                        NonGenerique_SortedList sortedList = new NonGenerique_SortedList();
+                        sortedList.ajouter(coureur2, coureur1);
+                        sortedList.ajouter(coureur3, coureur4);
+                        sortedList.ajouter(coureur9, coureur8.Maillot);
+                        sortedList.ajouter(coureur8, coureur7.Nom);
+                        sortedList.afficher();
+                        sortedList.supprimerIndex(sortedList.recupererIndexKey(coureur9));
+                        sortedList.afficher();
+                        sortedList.supprimerKey(coureur8);
+                        sortedList.afficher();
+
+                        sortedList.ajouter(coureur1, coureur8);
+                        sortedList.ajouter(coureur7, coureur4);
+                        sortedList.rechercherKey(coureur8);
+                        sortedList.rechercherValue(coureur4);
+                        sortedList.rechercher(coureur1);
+
                         break;
                     case 3:
                         break;

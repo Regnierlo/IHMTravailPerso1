@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 using System.Threading.Tasks;
 
 namespace Partie3
 {
-    class Coureur
+    class Coureur : IComparable
     {
         // attributs
         private int _maillot;
@@ -67,16 +67,19 @@ namespace Partie3
             return res;
         }
 
-        public int CompareTo(Coureur other)
+        public int CompareTo(Object other)
         {
             int res = -1;
-            if ((Object)other != null)
-            {
-                if ((Object)this == null)
-                    res = 0;
+            if (other == null)
+                res = 1;
+            else { 
+                Coureur otherCoureur = other as Coureur;
+                if (otherCoureur != null)
+                    res = this.Nom.CompareTo(otherCoureur.Nom);
                 else
-                    res = this.Nom.CompareTo(other.Nom);
+                    throw new ArgumentException("Pas un coureur !");
             }
+
             return res;
         }
     }
