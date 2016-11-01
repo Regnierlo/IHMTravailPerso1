@@ -181,7 +181,7 @@ namespace Partie3
                         Console.WriteLine("n°{0} : {1}\n", i, _stack.ElementAt(i));
             }
             else
-                Console.WriteLine("\n {0} n'est pas dans la queue.\n", objet.ToString());
+                Console.WriteLine("{0} n'est pas dans la queue.\n", objet.ToString());
         }
     }
 }
