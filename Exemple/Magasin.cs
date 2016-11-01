@@ -211,14 +211,17 @@ namespace Partie1
         /// <returns>Un entier : -1 => la magasin courant à un identifiant plus petit. 0 => L'identifiant des magasins sont identique. 1 => L'identifiant du magasin "other" est plus grand</returns>
         public int CompareTo(Magasin other)
         {
-            int res;
+            int res=0;
 
-            if (this.IdMag < other.IdMag)
-                res = -1;
-            else if (this.IdMag > other.IdMag)
-                res = 1;
-            else // this.IdMag == other.IdMa
-                res = 0;
+            if ((Object)other != null)
+            {
+                if (this.IdMag < other.IdMag)
+                    res = -1;
+                else if (this.IdMag > other.IdMag)
+                    res = 1;
+                else // this.IdMag == other.IdMa
+                    res = 0;
+            }
 
             return res;
         }

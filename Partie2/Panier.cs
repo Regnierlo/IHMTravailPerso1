@@ -194,7 +194,7 @@ namespace Partie2
                 if (tab != null)
                 {
                     s += tab.ToString();
-                    s += "\n";
+                    s += "\n\n";
                 }
             }
 
