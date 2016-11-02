@@ -146,7 +146,7 @@ namespace Partie1
         private void listerProduitTrie(Magasin m)
         {
             Console.Clear();
-            List<Produit> p = m.triProduits();
+            List<Produit> p = m.TriProduits();
             string s = "";
             foreach (Produit pr in p)
             {

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Partie1
 {
-    public enum CategorieProduit { Consommable, NonConsommable}
+    public enum CategorieProduit { Consommable, NonConsommable }
+
     public class Produit:IEquatable<Produit>, IComparable<Produit>
     {
         // attributs
@@ -231,15 +232,6 @@ namespace Partie1
             _code = Int32.Parse(s);
             Console.WriteLine("Cat(Consommable...)?");
             CatS = Console.ReadLine();
-        }
-
-        public string listeCategorie()
-        {
-            string s = "";
-
-            
-
-            return s;
         }
 
         public void affiche()

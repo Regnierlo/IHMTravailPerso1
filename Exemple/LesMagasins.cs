@@ -82,6 +82,7 @@ namespace Partie1
         public Magasin getMagasin(int num)
         {
             return _lm.ElementAt(num-1);
+            // la liste commence à 0, donc pour avoir le premier magasin on doit prendre le 0
         }
 
         public Boolean verifId(int id)

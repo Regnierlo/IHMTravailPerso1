@@ -122,7 +122,7 @@ namespace Partie1
         }
 
         /// <summary>
-        /// Retourne le code sous forme de String
+        /// Retourne la fonction de hachage sous forme de String
         /// </summary>
         /// <returns>Retourne un entier</returns>
         public override int GetHashCode()
@@ -180,7 +180,7 @@ namespace Partie1
         /// <param name="p">Produit à ajouter</param>
         public void AddProduit(Produit p)
         {
-            if (!verifProduit(p))
+            if (!VerifProduit(p))
                 _listeProd.Add(p);
             else
                 Console.WriteLine("Le produit existe déjà.");
@@ -191,7 +191,7 @@ namespace Partie1
         /// </summary>
         /// <param name="p">Produit à vérifier</param>
         /// <returns>Un Boolean <value>true</value> si le produit est présent et à <value>false</value> s'il ne l'ai pas.</returns>
-        private Boolean verifProduit(Produit p)
+        private Boolean VerifProduit(Produit p)
         {
             Boolean res = false;
 
@@ -200,7 +200,6 @@ namespace Partie1
                 if (pr.Code == p.Code)
                     res = true;
             }
-
             return res;
         }
         
@@ -290,11 +289,11 @@ namespace Partie1
             return res;
         }
 
-        public List<Produit> triProduits(){
+        public List<Produit> TriProduits(){
             List<Produit> listeTriee = new List<Produit>();
-            int min=Int32.MaxValue;
-            int max =Int32.MinValue;
-            for (int i = 0; i < _listeProd.Count; i++)
+            int min = Int32.MaxValue;
+            int max = Int32.MinValue;
+            for (int i = 0 ; i < _listeProd.Count ; i++)
             {
                 foreach (Produit l in _listeProd)
                 {
