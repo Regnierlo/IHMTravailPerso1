@@ -148,7 +148,7 @@ namespace Partie3
                 int i = 1;
                 foreach (DictionaryEntry entry in _sortedList)
                 {
-                    if (objet != null && entry.Value != null && (entry.Value.Equals(objet) || entry.Key.Equals(objet)))
+                    if (objet != null && entry.Value != null && ((entry.Value.Equals(objet) || entry.Key.Equals(objet))))
                         Console.WriteLine("n° {0} = clé : {1} / valeur : {2}.\n", i, entry.Key, entry.Value);
                     else
                         if (objet == null && entry.Value == null)
