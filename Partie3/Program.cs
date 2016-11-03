@@ -23,7 +23,7 @@ namespace Partie3
             Console.WriteLine("\n Que voulez-vous faire ?\n\n");
            
             Console.WriteLine("\n 1 : Travailler sur une collection générique ? \n");
-            Console.WriteLine("\n 2 : Travailler sur une collection non générique ? \n");
+            Console.WriteLine("\n 2 : Travailler sur une collection non générique ? \n\n");
             int nombre = 0;
             try
             {
@@ -33,12 +33,16 @@ namespace Partie3
             {
                 Console.Out.WriteLine("L'erreur suivante s'est produite : " + e.Message);
             }
-
+            Console.Clear();
+            Console.WriteLine("\n -----------------------------------------------------\n");
             if (nombre == 1)
             {
-                Console.WriteLine("\n    1 = Utilisation de Dictionary < Int32, Coureur >\n");
-                Console.WriteLine("    2 = Utilisation de Queue < Coureur >\n");
-                Console.WriteLine("    3 = Utilisation de Stack < Coureur >\n");
+               
+                Console.WriteLine("--> Vous avez choisi de tester une collection générique.\n\n");
+                Console.WriteLine(" 1 = Utilisation de Dictionary < Int32, Coureur >\n");
+                Console.WriteLine(" 2 = Utilisation de Queue < Coureur >\n");
+                Console.WriteLine(" 3 = Utilisation de Stack < Coureur >\n");
+
                 try
                 {
                     nombre = int.Parse(Console.In.ReadLine());
@@ -47,12 +51,14 @@ namespace Partie3
                 {
                     Console.Out.WriteLine("L'erreur suivante s'est produite : " + e.Message);
                 }
-
+                Console.Clear();
                 switch (nombre)
                 {
                     case 1:
                         Generique_Dictionnaire dictionnaire = new Generique_Dictionnaire();
-
+                        Console.WriteLine("\n -----------------------------------------------------\n");
+                        Console.WriteLine("         Création d'un Dictionary < Int32, Coureur >");
+                        Console.WriteLine("\n -----------------------------------------------------\n\n");
                         dictionnaire.Ajouter( 12 , coureur1 );
                         dictionnaire.Ajouter( 2 , coureur2 );
                         dictionnaire.Ajouter( 34 , coureur3 );
@@ -78,6 +84,10 @@ namespace Partie3
 
                     case 2:
                         Generique_Queue queue = new Generique_Queue();
+                        
+                        Console.WriteLine("\n -----------------------------------------------------\n");
+                        Console.WriteLine("         Création d'une Queue < Coureur >");
+                        Console.WriteLine("\n -----------------------------------------------------\n\n");
                         queue.Ajouter(coureur1);
                         queue.Ajouter(coureur2);
                         queue.Ajouter(coureur3);
@@ -102,6 +112,9 @@ namespace Partie3
                         break;
                     case 3:
                         Generique_Stack stack = new Generique_Stack();
+                        Console.WriteLine("\n -----------------------------------------------------\n");
+                        Console.WriteLine("         Création d'un Stack < Coureur >");
+                        Console.WriteLine("\n -----------------------------------------------------\n\n");
                         stack.Ajouter(coureur1);
                         stack.Ajouter(coureur2);
                         stack.Ajouter(coureur3);
@@ -131,9 +144,10 @@ namespace Partie3
             }
             else if (nombre == 2)
             {
-                Console.WriteLine("\n    1 = Utilisation de Hashtable\n");
-                Console.WriteLine("    2 = Utilisation de SortedList\n");
-                Console.WriteLine("    3 = Utilisation de Queue\n");
+                Console.WriteLine("--> Vous avez choisi de tester une collection générique.\n\n");
+                Console.WriteLine(" 1 = Utilisation de Hashtable\n");
+                Console.WriteLine(" 2 = Utilisation de SortedList\n");
+                Console.WriteLine(" 3 = Utilisation de Queue\n");
                 try
                 {
                     nombre = int.Parse(Console.In.ReadLine());
@@ -142,11 +156,15 @@ namespace Partie3
                 {
                     Console.Out.WriteLine("L'erreur suivante s'est produite : " + e.Message);
                 }
-
+                Console.Clear();
                 switch (nombre)
                 {
                     case 1:
                         NonGenerique_Hashtable hashtable = new NonGenerique_Hashtable();
+                        
+                        Console.WriteLine("\n -----------------------------------------------------\n");
+                        Console.WriteLine("         Création d'une Hashtable");
+                        Console.WriteLine("\n -----------------------------------------------------\n\n");
                         hashtable.Ajouter(coureur1, "Rhee");
                         hashtable.Ajouter(coureur1.Nom, true);
                         hashtable.Ajouter(coureur1.Nom, 15);
@@ -167,6 +185,10 @@ namespace Partie3
 
                     case 2:
                         NonGenerique_SortedList sortedList = new NonGenerique_SortedList();
+                        
+                        Console.WriteLine("\n -----------------------------------------------------\n");
+                        Console.WriteLine("         Création d'une SortedList");
+                        Console.WriteLine("\n -----------------------------------------------------\n\n");
                         sortedList.Ajouter(coureur2, coureur1);
                         sortedList.Ajouter(coureur3, coureur4);
                         sortedList.Ajouter(coureur9, coureur8.Maillot);
@@ -190,6 +212,10 @@ namespace Partie3
 
                     case 3:
                         NonGenerique_Queue queue = new NonGenerique_Queue();
+                        
+                        Console.WriteLine("\n -----------------------------------------------------\n");
+                        Console.WriteLine("         Création d'une Queue");
+                        Console.WriteLine("\n -----------------------------------------------------\n\n");
                         queue.Ajouter(coureur1);
                         queue.Ajouter(true);
                         queue.Ajouter(coureur7.Nom);
