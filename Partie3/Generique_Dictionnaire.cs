@@ -109,7 +109,7 @@ namespace Partie3
         /// Permet de Supprimer un couple clé/valeur en fonction de la clé
         /// </summary>
         /// <param name="numero">Le int correspondant à la clé du couple clé/valeur que l'on souhaite enlever de la collection</param>
-        public void Supprimer(int key)
+        public void Supprimer(Int32 key)
         {
             Console.WriteLine("\n------ Suppression ------ \n");
             if (_dictionary.ContainsKey(key))
@@ -184,7 +184,7 @@ namespace Partie3
                 {
                     if (entry.Key < min && entry.Key > max){
                         min = entry.Key;
-                        valeurRes=entry.Value;
+                        valeurRes = entry.Value;
                     }
                 }
                 res.Add(min, valeurRes);
